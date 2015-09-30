@@ -10,10 +10,10 @@
 #pragma link off all classes;
 #pragma link off all functions;
 
-#pragma link C++ namespace root6tools+;
-#pragma link C++ class root6tools::TNamedStl+;
-#pragma link C++ class root6tools::TGraphicsStyle+;
-#pragma link C++ class root6tools::TPlotMaker+;
-#pragma link C++ class root6tools::TPlotMaker::TPadMaker+;
+#pragma link C++ namespace r6tools+;
+#pragma link C++ class r6tools::TNamedStl+;
+#pragma link C++ class r6tools::TGraphicsStyle+;
+#pragma link C++ class r6tools::TPlotMaker+;
+#pragma link C++ class r6tools::TPlotMaker::TPadMaker+;
 
 #endif

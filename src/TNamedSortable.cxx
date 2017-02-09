@@ -15,29 +15,41 @@
  * You should have received a copy of the GNU General Public License        *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.    *
  ****************************************************************************/
-#include "TGraphicsStyle.h"
+#include "TNamedSortable.h"
 
-#include <TH1.h>
-#include <TGraphErrors.h>
+ClassImp(ROOT6tools::TNamedSortable);
 
 namespace ROOT6tools {
-  
-TGraphicsStyle::TGraphicsStyle(Color_t color, Style_t marker):
-fColor(color),
-fMarker(marker)
+
+TNamedSortable::TNamedSortable():
+  TNamed()
 {
 }
-  
-void TGraphicsStyle::DefineHistogram(TH1 *hist) const {
-  hist->SetMarkerColor(fColor);
-  hist->SetLineColor(fColor);
-  hist->SetMarkerStyle(fMarker);
+
+TNamedSortable::TNamedSortable(const char * name):
+  TNamed(name, "")
+{
+}
+
+TNamedSortable::TNamedSortable(const char * name, const char *title):
+  TNamed(name, title)
+{
+}
+
+bool TNamedSortable::operator==(const TNamedSortable &ref) const {
+  return IsEqual(&ref);
+}
+
+bool TNamedSortable::operator!=(const TNamedSortable &ref) const {
+  return !IsEqual(&ref);
 }
   
-void TGraphicsStyle::DefineGraph(TGraphErrors *graph) const {
-  graph->SetMarkerColor(fColor);
-  graph->SetLineColor(fColor);
-  graph->SetMarkerStyle(fMarker);
+bool TNamedSortable::operator<(const TNamedSortable &ref) const {
+  return Compare(&ref) < 0;
 }
-  
-} /* namespace r6tools */
+
+bool TNamedSortable::operator>(const TNamedSortable &ref) const {
+  return Compare(&ref) > 0;
+}
+
+}

@@ -15,29 +15,27 @@
  * You should have received a copy of the GNU General Public License        *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.    *
  ****************************************************************************/
-#include "TGraphicsStyle.h"
+#include "TAxisFrame.h"
 
-#include <TH1.h>
-#include <TGraphErrors.h>
+ClassImp(ROOT6tools::TAxisFrame)
 
 namespace ROOT6tools {
-  
-TGraphicsStyle::TGraphicsStyle(Color_t color, Style_t marker):
-fColor(color),
-fMarker(marker)
+
+TAxisFrame::TAxisFrame() : TH1F() {
+
+}
+
+TAxisFrame::TAxisFrame(const char *name, const char *xtitle, const char *ytitle, double xmin, double xmax, double ymin, double ymax):
+    TH1F(name, "", 100, xmin, xmax)
 {
+    SetDirectory(nullptr);
+    SetStats(false);
+    SetXTitle(xtitle);
+    SetYTitle(ytitle);
+    GetYaxis()->SetRangeUser(ymin, ymax);
 }
-  
-void TGraphicsStyle::DefineHistogram(TH1 *hist) const {
-  hist->SetMarkerColor(fColor);
-  hist->SetLineColor(fColor);
-  hist->SetMarkerStyle(fMarker);
+
+TAxisFrame::~TAxisFrame() {
 }
-  
-void TGraphicsStyle::DefineGraph(TGraphErrors *graph) const {
-  graph->SetMarkerColor(fColor);
-  graph->SetLineColor(fColor);
-  graph->SetMarkerStyle(fMarker);
-}
-  
-} /* namespace r6tools */
+
+} /* namespace ROOT6tools */

@@ -10,10 +10,14 @@
 #pragma link off all classes;
 #pragma link off all functions;
 
-#pragma link C++ namespace r6tools+;
-#pragma link C++ class r6tools::TNamedStl+;
-#pragma link C++ class r6tools::TGraphicsStyle+;
-#pragma link C++ class r6tools::TPlotMaker+;
-#pragma link C++ class r6tools::TPlotMaker::TPadMaker+;
+#pragma link C++ namespace ROOT6tools+;
+#pragma link C++ class ROOT6tools::TAxisFrame+;
+#pragma link C++ class ROOT6tools::TDefaultLegend+;
+#pragma link C++ class ROOT6tools::TGraphicsStyle+;
+#pragma link C++ class ROOT6tools::TNamedSortable+;
+#pragma link C++ class ROOT6tools::TNDCLabel+;
+#pragma link C++ class ROOT6tools::TPlotMaker+;
+#pragma link C++ class ROOT6tools::TPlotMaker::TPadMaker+;
+#pragma link C++ class ROOT6tools::TSavableCanvas+;
 
 #endif

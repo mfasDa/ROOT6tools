@@ -27,9 +27,13 @@ link_directories(
 )
 
 set(SRCS
-    TNamedStl.cxx
+    TAxisFrame.cxx
+    TDefaultLegend.cxx
     TGraphicsStyle.cxx
+    TNamedSortable.cxx
+    TNDCLabel.cxx
     TPlotMaker.cxx
+    TSavableCanvas.cxx
 )
 
 # Headers from sources

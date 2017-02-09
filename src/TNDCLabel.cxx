@@ -15,29 +15,24 @@
  * You should have received a copy of the GNU General Public License        *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.    *
  ****************************************************************************/
-#include "TNamedStl.h"
+#include "TNDCLabel.h"
 
-namespace r6tools {
-  
-  TNamedStl::TNamedStl(std::string name):
-  TNamed(name.c_str(), "")
-  {
-  }
-  
-  bool TNamedStl::operator==(const TNamedStl &ref) const {
-    return IsEqual(&ref);
-  }
+ClassImp(ROOT6tools::TNDCLabel)
 
-  bool TNamedStl::operator!=(const TNamedStl &ref) const {
-    return !IsEqual(&ref);
-  }
-  
-  bool TNamedStl::operator<(const TNamedStl &ref) const {
-    return Compare(&ref) < 0;
-  }
+namespace ROOT6tools {
 
-  bool TNamedStl::operator>(const TNamedStl &ref) const {
-    return Compare(&ref) > 0;
-  }
+TNDCLabel::TNDCLabel() { }
 
+TNDCLabel::TNDCLabel(double xmin, double ymin, double xmax, double ymax, const char *text):
+    TPaveText(xmin, ymin, xmax, ymax, "NDC")
+{
+    SetBorderSize(0);
+    SetFillStyle(0);
+    SetTextFont(42);
+    AddText(text);
 }
+
+
+TNDCLabel::~TNDCLabel() { }
+
+} /* namespace ROOT6tools */

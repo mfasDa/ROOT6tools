@@ -15,29 +15,29 @@
  * You should have received a copy of the GNU General Public License        *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.    *
  ****************************************************************************/
-#include "TGraphicsStyle.h"
+#include <array>
+#include "TSavableCanvas.h"
+#include "TString.h"
 
-#include <TH1.h>
-#include <TGraphErrors.h>
+ClassImp(ROOT6tools::TSavableCanvas)
 
 namespace ROOT6tools {
-  
-TGraphicsStyle::TGraphicsStyle(Color_t color, Style_t marker):
-fColor(color),
-fMarker(marker)
+
+TSavableCanvas::TSavableCanvas():
+    TCanvas()
 {
 }
-  
-void TGraphicsStyle::DefineHistogram(TH1 *hist) const {
-  hist->SetMarkerColor(fColor);
-  hist->SetLineColor(fColor);
-  hist->SetMarkerStyle(fMarker);
+
+TSavableCanvas::TSavableCanvas(const char *name, const char *title, int nx, int ny):
+    TCanvas(name, title, nx, ny)
+{
 }
-  
-void TGraphicsStyle::DefineGraph(TGraphErrors *graph) const {
-  graph->SetMarkerColor(fColor);
-  graph->SetLineColor(fColor);
-  graph->SetMarkerStyle(fMarker);
+
+TSavableCanvas::~TSavableCanvas() { }
+
+void TSavableCanvas::SaveCanvas(const char *basename){
+    const std::array<const TString, 5> kFileTypes = {"eps", "pdf", "png", "jpg", "gif"};
+    for(auto f : kFileTypes) this->SaveAs(Form("%s.%s", basename, f.Data()));
 }
-  
-} /* namespace r6tools */
+
+} /* namespace ROOT6tools */

@@ -15,29 +15,24 @@
  * You should have received a copy of the GNU General Public License        *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.    *
  ****************************************************************************/
-#include "TGraphicsStyle.h"
+#include "TDefaultLegend.h"
 
-#include <TH1.h>
-#include <TGraphErrors.h>
+ClassImp(ROOT6tools::TDefaultLegend)
 
 namespace ROOT6tools {
-  
-TGraphicsStyle::TGraphicsStyle(Color_t color, Style_t marker):
-fColor(color),
-fMarker(marker)
+
+TDefaultLegend::TDefaultLegend() {
+}
+
+TDefaultLegend::TDefaultLegend(double xmin, double ymin, double xmax, double ymax):
+    TLegend(xmin, ymin, xmax, ymax)
 {
+  SetBorderSize(0);
+  SetFillStyle(0);
+  SetTextFont(42);
 }
-  
-void TGraphicsStyle::DefineHistogram(TH1 *hist) const {
-  hist->SetMarkerColor(fColor);
-  hist->SetLineColor(fColor);
-  hist->SetMarkerStyle(fMarker);
+
+TDefaultLegend::~TDefaultLegend() {
 }
-  
-void TGraphicsStyle::DefineGraph(TGraphErrors *graph) const {
-  graph->SetMarkerColor(fColor);
-  graph->SetLineColor(fColor);
-  graph->SetMarkerStyle(fMarker);
-}
-  
-} /* namespace r6tools */
+
+} /* namespace ROOT6tools */

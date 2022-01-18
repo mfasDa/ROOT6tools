@@ -39,7 +39,7 @@ set(SRCS
 # Headers from sources
 string(REPLACE ".cxx" ".h" HDRS "${SRCS}")
 
-set(ROOT_DEPENDENCIES Core EG Geom Gpad Graf Hist MathCore Matrix Physics RIO Tree VMC)
+set(ROOT_DEPENDENCIES Core Gpad Graf Hist MathCore RIO)
 
 get_directory_property(incdirs INCLUDE_DIRECTORIES)
 generate_dictionary("${MODULE}" "${MODULE}LinkDef.h" "${HDRS}" "${incdirs}")

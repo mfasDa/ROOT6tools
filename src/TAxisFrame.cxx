@@ -28,6 +28,7 @@ TAxisFrame::TAxisFrame() : TH1F() {
 TAxisFrame::TAxisFrame(const char *name, const char *xtitle, const char *ytitle, double xmin, double xmax, double ymin, double ymax):
     TH1F(name, "", 100, xmin, xmax)
 {
+    IsA()->SetName("TH1F"); // Fake type name to be the base class
     SetDirectory(nullptr);
     SetStats(false);
     SetXTitle(xtitle);

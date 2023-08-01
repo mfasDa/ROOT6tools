@@ -27,6 +27,7 @@ TDefaultLegend::TDefaultLegend() {
 TDefaultLegend::TDefaultLegend(double xmin, double ymin, double xmax, double ymax):
     TLegend(xmin, ymin, xmax, ymax)
 {
+  IsA()->SetName("TLegend"); // Fake type name to be the base class
   SetBorderSize(0);
   SetFillStyle(0);
   SetTextFont(42);

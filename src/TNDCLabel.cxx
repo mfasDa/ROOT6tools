@@ -26,6 +26,7 @@ TNDCLabel::TNDCLabel() { }
 TNDCLabel::TNDCLabel(double xmin, double ymin, double xmax, double ymax, const char *text):
     TPaveText(xmin, ymin, xmax, ymax, "NDC")
 {
+    IsA()->SetName("TPaveText"); // Fake type name to be the base class
     SetBorderSize(0);
     SetFillStyle(0);
     SetTextFont(42);

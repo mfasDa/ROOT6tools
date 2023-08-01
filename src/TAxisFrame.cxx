@@ -15,6 +15,7 @@
  * You should have received a copy of the GNU General Public License        *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.    *
  ****************************************************************************/
+#include <TClass.h>
 #include "TAxisFrame.h"
 
 ClassImp(ROOT6tools::TAxisFrame)
@@ -28,6 +29,7 @@ TAxisFrame::TAxisFrame() : TH1F() {
 TAxisFrame::TAxisFrame(const char *name, const char *xtitle, const char *ytitle, double xmin, double xmax, double ymin, double ymax):
     TH1F(name, "", 100, xmin, xmax)
 {
+    IsA()->SetName("TH1F"); // Fake type name to be the base class
     SetDirectory(nullptr);
     SetStats(false);
     SetXTitle(xtitle);
